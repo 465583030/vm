@@ -9,10 +9,10 @@ type Ptr struct {
 	to  reflect.Value
 }
 
-func (p *Ptr) Type() reflect.Type {
+func (p Ptr) Type() reflect.Type {
 	return p.typ
 }
 
 func PtrTo(val reflect.Value) reflect.Value {
-	return &Ptr{reflect.PtrTo(val.Type()), val}
+	return Ptr{reflect.PtrTo(val.Type()), val}
 }

@@ -4,9 +4,9 @@ import "github.com/open-compiler-project/vm/internal/reflect"
 
 type NullPtr Ptr
 
-var Null *NullPtr = &NullPtr{}
+var Null NullPtr = NullPtr{}
 
-func (*NullPtr) Type() reflect.Type {
+func (NullPtr) Type() reflect.Type {
 	return reflect.Null
 }
 

@@ -8,10 +8,10 @@ import (
 )
 
 type FrameInfo struct {
-	name       string
-	startIP    int
-	localNames []string
-	retType    reflect.Type
+	Name       string
+	StartIP    int
+	LocalNames []string
+	RetType    reflect.Type
 }
 
 type Frame struct {
@@ -25,14 +25,14 @@ type Frame struct {
 func NewFrame(finfo *FrameInfo, parent *Frame) *Frame {
 	return &Frame{
 		info:   finfo,
-		locals: make([]reflect.Value, len(finfo.localNames)),
+		locals: make([]reflect.Value, len(finfo.LocalNames)),
 		retVal: internal.Null,
 		parent: parent,
 	}
 }
 
 func (f *Frame) Trace() string {
-	trc := fmt.Sprintf(" \t%s\n", f.info.name)
+	trc := fmt.Sprintf(" \t%s\n", f.info.Name)
 	if f.parent != nil {
 		return "trace: last is latest\n>" + f.parent.Trace() + trc
 	}
